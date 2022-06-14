@@ -1,0 +1,30 @@
+D:\Папка с долгами\Курсач\Product\Sum10\Sum10\bin\Debug\Sum10.dll
+D:\Папка с долгами\Курсач\Product\Sum10\Sum10\bin\Debug\Sum10.pdb
+D:\Папка с долгами\Курсач\Product\Sum10\Sum10\obj\Debug\Sum10.csproj.CoreCompileInputs.cache
+D:\Папка с долгами\Курсач\Product\Sum10\Sum10\obj\Debug\Sum10.dll
+D:\Папка с долгами\Курсач\Product\Sum10\Sum10\obj\Debug\Sum10.pdb
+D:\Папка с долгами\Курсач\Product\Sum10\Sum10\obj\Debug\Sum10.csproj.AssemblyReference.cache
+D:\bormotkin\Product\Sum10\Sum10\obj\Debug\Sum10.csprojAssemblyReference.cache
+D:\bormotkin\Product\Sum10\Sum10\obj\Debug\Sum10.csproj.CoreCompileInputs.cache
+D:\bormotkin\Product\Sum10\Sum10\obj\Debug\Sum10.dll
+D:\bormotkin\Product\Sum10\Sum10\obj\Debug\Sum10.pdb
+D:\bormotkin\Product\Sum10\Sum10\bin\Debug\Sum10.dll
+D:\bormotkin\Product\Sum10\Sum10\bin\Debug\Sum10.pdb
+D:\php\dubrovskiy\Product\Sum10\Sum10\bin\Debug\Sum10.dll
+D:\php\dubrovskiy\Product\Sum10\Sum10\bin\Debug\Sum10.pdb
+D:\php\dubrovskiy\Product\Sum10\Sum10\obj\Debug\Sum10.csprojAssemblyReference.cache
+D:\php\dubrovskiy\Product\Sum10\Sum10\obj\Debug\Sum10.csproj.CoreCompileInputs.cache
+D:\php\dubrovskiy\Product\Sum10\Sum10\obj\Debug\Sum10.dll
+D:\php\dubrovskiy\Product\Sum10\Sum10\obj\Debug\Sum10.pdb
+D:\php\asdasd\Product\Sum10\bin\Debug\Sum10.dll
+D:\php\asdasd\Product\Sum10\bin\Debug\Sum10.pdb
+D:\php\asdasd\Product\Sum10\obj\Debug\Sum10.csprojAssemblyReference.cache
+D:\php\asdasd\Product\Sum10\obj\Debug\Sum10.csproj.CoreCompileInputs.cache
+D:\php\asdasd\Product\Sum10\obj\Debug\Sum10.dll
+D:\php\asdasd\Product\Sum10\obj\Debug\Sum10.pdb
+D:\php\dubrovskiy\Product\Sum10\bin\Debug\Sum10.dll
+D:\php\dubrovskiy\Product\Sum10\bin\Debug\Sum10.pdb
+D:\php\dubrovskiy\Product\Sum10\obj\Debug\Sum10.csprojAssemblyReference.cache
+D:\php\dubrovskiy\Product\Sum10\obj\Debug\Sum10.csproj.CoreCompileInputs.cache
+D:\php\dubrovskiy\Product\Sum10\obj\Debug\Sum10.dll
+D:\php\dubrovskiy\Product\Sum10\obj\Debug\Sum10.pdb
