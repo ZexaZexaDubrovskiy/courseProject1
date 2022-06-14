@@ -79,12 +79,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.myClassSum101.BackColor = System.Drawing.Color.BurlyWood;
-            this.myClassSum101.BackroundColor = System.Drawing.Color.Transparent;
             this.myClassSum101.CellPadding = 10;
             this.myClassSum101.Location = new System.Drawing.Point(0, 0);
             this.myClassSum101.Name = "myClassSum101";
-            this.myClassSum101.NumberColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(59)))), ((int)(((byte)(70)))));
-            this.myClassSum101.ObjectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.myClassSum101.Size = new System.Drawing.Size(661, 661);
             this.myClassSum101.TabIndex = 0;
             this.myClassSum101.Text = "myClassSum101";

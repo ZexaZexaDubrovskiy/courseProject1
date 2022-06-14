@@ -64,3 +64,16 @@ D:\php\dubrovskiy\Product\ScreenSum10\bin\Debug\ScreenSum10.pdb
 D:\php\dubrovskiy\Product\ScreenSum10\bin\Debug\Sum10.dll
 D:\php\dubrovskiy\Product\ScreenSum10\bin\Debug\Sum10.pdb
 D:\php\dubrovskiy\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.CopyComplete
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\bin\Debug\ScreenSum10.exe.config
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\bin\Debug\ScreenSum10.exe
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\bin\Debug\ScreenSum10.pdb
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\bin\Debug\Sum10.dll
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\bin\Debug\Sum10.pdb
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csprojAssemblyReference.cache
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.Form1.resources
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.Properties.Resources.resources
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.GenerateResource.cache
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.CoreCompileInputs.cache
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.CopyComplete
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.exe
+D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.pdb

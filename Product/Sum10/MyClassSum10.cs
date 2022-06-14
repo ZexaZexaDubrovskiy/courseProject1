@@ -12,10 +12,7 @@ namespace Sum10
         {
             _objectSize = (MinSize - 10 * CellPadding) / 10;
             _cellPadding = 2;
-            systemColor.Add(Color.FromArgb(196, 223, 230));
-            systemColor.Add(Color.FromArgb(0, 59, 70));
-            systemColor.Add(Color.FromArgb(102, 165, 173));
-
+            
             numbersColor.Add(Color.FromArgb(255, 0, 0));
             numbersColor.Add(Color.FromArgb(255, 116, 0));
             numbersColor.Add(Color.FromArgb(7, 114, 161));
@@ -43,16 +40,14 @@ namespace Sum10
         }
 
         //перпеменные
-        List<Color> systemColor = new List<Color>();
+        //List<Color> systemColor = new List<Color>();
         List<Color> numbersColor = new List<Color>();
         List<Color> textColor = new List<Color>();
 
         private int MinSize => Math.Min(Width, Height);
         private int[,] _cell = new int[10, 10];
         private int buffer;
-        private Color _backroundColor;
         private Color _numberColor;
-        private Color _objectColor;
         private int _objectSize;
         private int _cellPadding;
         private int _xCor;
@@ -63,35 +58,10 @@ namespace Sum10
         private int cnt;
         private int _totalSum;
         public void ChangeSize(EventArgs e) => ObjectSize = (MinSize - 10 * CellPadding) / 10;
-
         private bool _currentState = false;
 
         //svoistvya
-        public Color BackroundColor
-        {
-            get => _backroundColor;
-            set
-            {
-                if (value != _backroundColor)
-                {
-                    _backroundColor = value;
-                    Invalidate();
-                }
-            }
-        }
-        public Color ObjectColor
-        {
-            get => _objectColor;
-            set
-            {
-                if (value != _objectColor)
-                {
-                    _objectColor = value;
-                    Invalidate();
-                }
-            }
-        }
-        public Color NumberColor
+        private Color NumberColor
         {
             get => _numberColor;
             set
@@ -172,28 +142,17 @@ namespace Sum10
         protected override void SetBoundsCore(int x, int y, int width, int height, BoundsSpecified specified)
         {
             if (width > Math.Min(height, width))
-            {
                 width = height;
-            }
             else
-            {
                 height = width;
-            }
             base.SetBoundsCore(x, y, width, height, specified);
-            _objectSize = (Math.Min(Size.Width, Size.Height) - 10 * _cellPadding) / 10; //fix
+            _objectSize = (Math.Min(Size.Width, Size.Height) - 10 * _cellPadding) / 10; 
         }
 
         //функция рисования
         protected override void OnPaint(PaintEventArgs e)
         {
             Rectangle rect;
-            Rectangle fon;
-
-            Brush objectColor = new SolidBrush(_objectColor);
-            Brush background = new SolidBrush(_backroundColor);
-            //fon
-            fon = new Rectangle(0, 0, _objectSize * 10 + _cellPadding * 9, _objectSize * 10 + _cellPadding * 9);
-            e.Graphics.FillRectangle(background, fon);
 
             //text
             int fontSize = ObjectSize / 4;
@@ -218,7 +177,7 @@ namespace Sum10
                 }
             }
 
-            if (Coordinate.Count > 1 && Coordinate.Count % 2 == 0)
+            if (Coordinate.Count > 0)
             {
                 for (int i = 0; Coordinate.Count - i != 0; i = i + 2)
                 {
@@ -226,15 +185,9 @@ namespace Sum10
                     Brush dopObjectColor = new SolidBrush(Color.White);
                     rect = new Rectangle(resSizeP * Coordinate[i], resSizeP * Coordinate[i + 1], ObjectSize, ObjectSize);
                     e.Graphics.FillRectangle(dopObjectColor, rect);
-                    e.Graphics.DrawString(_cell[Coordinate[i], Coordinate[i + 1]].ToString(), font, number, rect, sf);
+                    e.Graphics.DrawString(_cell[Coordinate[i], Coordinate[i + 1]].ToString(), font, new SolidBrush(Color.Black), rect, sf);
                 }
             }
-
-            number.Dispose();
-            background.Dispose();
-            font.Dispose();
-            sf.Dispose();
-            objectColor.Dispose();
         }
 
         //нажатие на левую клавишу мыши
