@@ -77,3 +77,17 @@ D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.cspro
 D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.CopyComplete
 D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.exe
 D:\php\dubrovskiy\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.pdb
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.AssemblyReference.cache
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.SuggestedBindingRedirects.cache
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.Form1.resources
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.Properties.Resources.resources
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.GenerateResource.cache
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.CoreCompileInputs.cache
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.exe
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.pdb
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\bin\Debug\ScreenSum10.exe.config
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\bin\Debug\ScreenSum10.exe
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\bin\Debug\ScreenSum10.pdb
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\bin\Debug\Sum10.dll
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\bin\Debug\Sum10.pdb
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\ScreenSum10\obj\Debug\ScreenSum10.csproj.CopyComplete

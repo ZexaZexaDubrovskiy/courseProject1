@@ -12,7 +12,6 @@ namespace Sum10
         {
             _objectSize = (MinSize - 10 * CellPadding) / 10;
             _cellPadding = 2;
-            
             numbersColor.Add(Color.FromArgb(255, 0, 0));
             numbersColor.Add(Color.FromArgb(255, 116, 0));
             numbersColor.Add(Color.FromArgb(7, 114, 161));
@@ -23,7 +22,6 @@ namespace Sum10
             numbersColor.Add(Color.FromArgb(255, 153, 0));
             numbersColor.Add(Color.FromArgb(72, 3, 111));
             numbersColor.Add(Color.FromArgb(7, 114, 161));
-
             //text
             textColor.Add(Color.FromArgb(0, 204, 0));
             textColor.Add(Color.FromArgb(0, 153, 153));
@@ -35,19 +33,14 @@ namespace Sum10
             textColor.Add(Color.FromArgb(13, 88, 166));
             textColor.Add(Color.FromArgb(166, 166, 0));
             textColor.Add(Color.FromArgb(0, 171, 111));
-
             updateArray();
         }
-
         //перпеменные
-        //List<Color> systemColor = new List<Color>();
         List<Color> numbersColor = new List<Color>();
         List<Color> textColor = new List<Color>();
-
         private int MinSize => Math.Min(Width, Height);
         private int[,] _cell = new int[10, 10];
         private int buffer;
-        private Color _numberColor;
         private int _objectSize;
         private int _cellPadding;
         private int _xCor;
@@ -57,22 +50,8 @@ namespace Sum10
         private int sum;
         private int cnt;
         private int _totalSum;
-        public void ChangeSize(EventArgs e) => ObjectSize = (MinSize - 10 * CellPadding) / 10;
         private bool _currentState = false;
-
-        //svoistvya
-        private Color NumberColor
-        {
-            get => _numberColor;
-            set
-            {
-                if (value != _numberColor)
-                {
-                    _numberColor = value;
-                    Invalidate();
-                }
-            }
-        }
+        //Свойства
         public int CellPadding
         {
             get => _cellPadding;
@@ -148,25 +127,21 @@ namespace Sum10
             base.SetBoundsCore(x, y, width, height, specified);
             _objectSize = (Math.Min(Size.Width, Size.Height) - 10 * _cellPadding) / 10; 
         }
-
+        //изменение размеров ячеек
+        public void ChangeSize(EventArgs e) => ObjectSize = (MinSize - 10 * CellPadding) / 10;
         //функция рисования
         protected override void OnPaint(PaintEventArgs e)
         {
             Rectangle rect;
-
             //text
             int fontSize = ObjectSize / 4;
             Font font = new Font("Segoe Script", fontSize);
-            Brush number = new SolidBrush(NumberColor);
             StringFormat sf = new StringFormat();
             sf.Alignment = StringAlignment.Center;
             sf.LineAlignment = StringAlignment.Center;
-
             //osnova
             for (int i = 0; i < _cell.GetLength(0); ++i)
-            {
                 for (int j = 0; j < _cell.GetLength(1); ++j)
-                {
                     if (_cell[i, j] != 0)
                     {
                         int resSizeP = ObjectSize + CellPadding;
@@ -174,11 +149,8 @@ namespace Sum10
                         e.Graphics.FillRectangle(new SolidBrush(numbersColor[_cell[i, j]]), rect);
                         e.Graphics.DrawString(_cell[i, j].ToString(), font, new SolidBrush(textColor[_cell[i, j]]), rect, sf);
                     }
-                }
-            }
 
             if (Coordinate.Count > 0)
-            {
                 for (int i = 0; Coordinate.Count - i != 0; i = i + 2)
                 {
                     int resSizeP = ObjectSize + CellPadding;
@@ -187,9 +159,7 @@ namespace Sum10
                     e.Graphics.FillRectangle(dopObjectColor, rect);
                     e.Graphics.DrawString(_cell[Coordinate[i], Coordinate[i + 1]].ToString(), font, new SolidBrush(Color.Black), rect, sf);
                 }
-            }
         }
-
         //нажатие на левую клавишу мыши
         public void onClickListener(Point MousePos)
         {
@@ -212,12 +182,8 @@ namespace Sum10
                 Coordinate.Add(_xCor);
                 Coordinate.Add(_yCor);
                 for (int i = 0; Coordinate.Count - i - 2 != 0; i = i + 2)
-                {
                     if (_xCor == Coordinate[i] && _yCor == Coordinate[i + 1])
-                    {
                         _currentState = true;
-                    }
-                }
                 //если больше 1 элемента
                 if (_currentState == false)
                 {
@@ -314,109 +280,89 @@ namespace Sum10
             }
             Invalidate();
         }
-
         //функция определения победы или поражения
         public bool WinOrLose()
         {
             List<CellPath> paths = new List<CellPath>();
             for (int i = 0; i < _cell.GetLength(0); i++)
-            {
-                Cell cell = new Cell();
-                cell.Row = i;
-                cell.Col = _cell.GetLength(0) - 1;
-                paths.Add(GetPath(cell));
-            }
-
-
-            foreach (var item in paths)
-            {
-                if (item.GetPathValue() >= 10 && item.GetPathValue()/item.path.Count > 3)
+                for (int j = 0; j < _cell.GetLength(1); j++)
                 {
-                    return true;
+                    if (_cell[i, j] > 0)
+                    {
+                        Cell cell = new Cell() { Row = i, Col = j };
+                        var lis = new List<Cell>();
+                        lis.Add(cell);
+                        CellPath cl = new CellPath();
+                        cl.path = fuckingRecursion(lis, cell, lis);
+                        paths.Add(cl);
+                    }
                 }
-
-            }
+            foreach (var item in paths)
+                if (item.GetPathValue10() == 10)
+                    return true;
             return false;
         }
-
-        //получить путь(занести в лист путь)
-        public CellPath GetPath(Cell cell)
+     
+        private List<Cell> fuckingRecursion(List<Cell> path, Cell buf, List<Cell> allPath)
         {
-            CellPath path = new CellPath();
-            Stack<Cell> stack = new Stack<Cell>();
-            path.path.Add(cell);
-            stack.Push(cell);
-            while (stack.Count > 0)
+            var lis = new List<Cell>();
+            if (buf.Row - 1 >= 0 && _cell[buf.Row - 1, buf.Col] > 0) 
             {
-                Cell buf = stack.Pop();
-                if (buf.Row - 1 >= 0 &&
-                    _cell[buf.Row - 1, buf.Col] > 0)
+                Cell cell1 = new Cell(buf.Col, buf.Row - 1, _cell[buf.Row - 1, buf.Col]);
+                if (!check(allPath, cell1))
                 {
-                    Cell cell1 = new Cell(buf.Col, buf.Row - 1, _cell[buf.Row - 1, buf.Col]);
-                    if (!check(path, cell1))
-                    {
-                        stack.Push(cell1);
-                        path.path.Add(cell1);
-                    }
+                    lis.Add(cell1);
+                    allPath.Add(cell1);
+                    path.AddRange(fuckingRecursion(lis, cell1, allPath));
                 }
-
-                if (buf.Col - 1 >= 0 &&
-                    _cell[buf.Row, buf.Col - 1] > 0)
+            } 
+            if (buf.Col - 1 >= 0 && _cell[buf.Row, buf.Col - 1] > 0)
+            {
+                Cell cell1 = new Cell(buf.Col - 1, buf.Row, _cell[buf.Row, buf.Col - 1]);
+                if (!check(allPath, cell1))
                 {
-                    Cell cell1 = new Cell(buf.Col - 1, buf.Row, _cell[buf.Row, buf.Col - 1]);
-                    if (!check(path, cell1))
-                    {
-                        stack.Push(cell1);
-                        path.path.Add(cell1);
-                    }
+                    lis.Add(cell1);
+                    allPath.Add(cell1);
+                    path.AddRange(fuckingRecursion(lis, cell1, allPath));
                 }
-
-                if (buf.Row + 1 <= _cell.GetLength(0) - 1 &&
-                    _cell[buf.Row + 1, buf.Col] > 0)
+            } 
+            if (buf.Row + 1 <= _cell.GetLength(0) - 1 && _cell[buf.Row + 1, buf.Col] > 0)
+            {
+                Cell cell1 = new Cell(buf.Col, buf.Row + 1, _cell[buf.Row + 1, buf.Col]);
+                if (!check(allPath, cell1))
                 {
-                    Cell cell1 = new Cell(buf.Col, buf.Row + 1, _cell[buf.Row + 1, buf.Col]);
-                    if (!check(path, cell1))
-                    {
-                        stack.Push(cell1);
-                        path.path.Add(cell1);
-                    }
+                    lis.Add(cell1);
+                    allPath.Add(cell1);
+                    path.AddRange(fuckingRecursion(lis, cell1, allPath));
                 }
-
-                if (buf.Col + 1 <= _cell.GetLength(0) - 1 &&
-                    _cell[buf.Row, buf.Col + 1] > 0)
+            }  
+            if (buf.Col + 1 <= _cell.GetLength(0) - 1 && _cell[buf.Row, buf.Col + 1] > 0)
+            {
+                Cell cell1 = new Cell(buf.Col + 1, buf.Row, _cell[buf.Row, buf.Col + 1]);
+                if (!check(allPath, cell1))
                 {
-                    Cell cell1 = new Cell(buf.Col + 1, buf.Row, _cell[buf.Row, buf.Col + 1]);
-                    if (!check(path, cell1))
-                    {
-                        stack.Push(cell1);
-                        path.path.Add(cell1);
-                    }
+                    lis.Add(cell1);
+                    allPath.Add(cell1);
+                    path.AddRange(fuckingRecursion(lis, cell1, allPath));
                 }
             }
             return path;
         }
 
-        //проверка ячеек
-        public bool check(CellPath path, Cell currentCell)
+        public bool check(List<Cell> path, Cell currentCell)
         {
-            //путь содержит ячейку
-            foreach (var item in path.path)
+            foreach (var item in path)
                 if (item.Equals(currentCell))
                     return true;
             return false;
         }
-
         //обновление поля
         public void updateArray()
         {
             var rand = new Random();
             for (int i = 0; i < _cell.GetLength(0); ++i)
-                for (int j = 0; j < _cell.GetLength(1); ++j)
-                    _cell[i, j] = 0;
-
-            for (int i = 0; i < _cell.GetLength(0); ++i)
                 for (int j = 8; j < _cell.GetLength(1); ++j)
-                    _cell[i, j] = rand.Next(1, 9);
+                    _cell[i, j] = rand.Next(5, 9);
             if (Coordinate.Count != 0)
                 Coordinate.Clear();
             if (_totalSum != 0)

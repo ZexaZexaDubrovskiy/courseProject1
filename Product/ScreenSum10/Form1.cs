@@ -9,7 +9,8 @@ namespace ScreenSum10
         public Form1()
         {
             InitializeComponent();
-            if (myClassSum101.WinOrLose() == false) {
+            if (myClassSum101.WinOrLose() == false)
+            {
                 MessageBox.Show("Поле создано неудачно!", "Внимание", MessageBoxButtons.OK);
             }
         }

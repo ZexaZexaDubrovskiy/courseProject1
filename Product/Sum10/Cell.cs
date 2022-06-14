@@ -19,7 +19,7 @@ namespace Sum10
         public int Row { get; set; }
         public int Col { get; set; }
         public int Value { get; set; }
-        //определяет ячейку(переопределнный метод сравнеиня)
+
         public override bool Equals(object obj)
         {
             return obj is Cell cell &&

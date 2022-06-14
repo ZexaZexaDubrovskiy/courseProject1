@@ -34,3 +34,9 @@ D:\php\dubrovskiy\courseProject1\Product\Sum10\obj\Debug\Sum10.csprojAssemblyRef
 D:\php\dubrovskiy\courseProject1\Product\Sum10\obj\Debug\Sum10.csproj.CoreCompileInputs.cache
 D:\php\dubrovskiy\courseProject1\Product\Sum10\obj\Debug\Sum10.dll
 D:\php\dubrovskiy\courseProject1\Product\Sum10\obj\Debug\Sum10.pdb
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\Sum10\bin\Debug\Sum10.dll
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\Sum10\bin\Debug\Sum10.pdb
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\Sum10\obj\Debug\Sum10.csproj.AssemblyReference.cache
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\Sum10\obj\Debug\Sum10.csproj.CoreCompileInputs.cache
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\Sum10\obj\Debug\Sum10.dll
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\2 version\courseProject1\Product\Sum10\obj\Debug\Sum10.pdb
