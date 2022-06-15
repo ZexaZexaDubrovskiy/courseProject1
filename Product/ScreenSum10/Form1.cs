@@ -9,10 +9,8 @@ namespace ScreenSum10
         public Form1()
         {
             InitializeComponent();
-            if (myClassSum101.WinOrLose() == false)
-            {
-                MessageBox.Show("Поле создано неудачно!", "Внимание", MessageBoxButtons.OK);
-            }
+            //if (myClassSum101.WinOrLose() == false)
+            //    MessageBox.Show("Поле создано неудачно!", "Внимание", MessageBoxButtons.OK);
         }
         //событие изменения размеров компонента
         private void myClassSum101_SizeChanged(object sender, EventArgs e)
@@ -31,11 +29,6 @@ namespace ScreenSum10
             myClassSum101.updateArray();
             Refresh();
             label1.Text = $"Sum: {myClassSum101.TotalSum}";
-        }
-        //загрузка формы
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
