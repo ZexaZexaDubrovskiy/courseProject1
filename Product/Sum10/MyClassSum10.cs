@@ -236,11 +236,11 @@ namespace Sum10
             return false;
         }
         //основной алгоритм проверки на сумму 10
-        public bool CheckCell(int Row, int Col, int Value)
+        private bool CheckCell(int Row, int Col, int Value)
         {
             List<CellPath> paths = new List<CellPath>();
             CellPath path = new CellPath();
-            path.path.Add(new Cell() { Row = Row, Col = Col, Value = _cell[Row, Col] });
+            path.path.Add(new Cell() { Row = Row, Col = Col, Value = Value });
             paths.Add(path);
             int i = 0;
             int buf;
@@ -263,10 +263,8 @@ namespace Sum10
                 foreach (var sum in path.path)
                 {
                     buf += sum.Value;
-                    if (buf == 0b1010)
-                        return true;
-                    else if (buf >= 0b1010)
-                        buf = 0; 
+                    if (buf == 0b1010) return true;
+                    else if (buf >= 0b1010) buf = 0; 
                 }
             }
             return false;
