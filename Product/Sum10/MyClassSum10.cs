@@ -81,11 +81,10 @@ namespace Sum10
         public int TotalSum
         {
             get => _totalSum;
-            private set
+            set
             {
                 if (value < 0)
                     value = 0;
-
                 if (value != _totalSum)
                 {
                     _totalSum = value;

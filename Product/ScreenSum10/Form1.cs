@@ -6,7 +6,11 @@ namespace ScreenSum10
     public partial class Form1 : Form
     {
         //инициализация компонента
-        public Form1() => InitializeComponent();
+        public Form1()
+        {
+            InitializeComponent();
+            label1.Text = $"Sum: {myClassSum101.TotalSum}";
+        }
         //событие изменения размеров компонента
         private void myClassSum101_SizeChanged(object sender, EventArgs e) => myClassSum101.ChangeSize(e);
         //событие на нажатие
@@ -19,8 +23,8 @@ namespace ScreenSum10
         private void button1_Click(object sender, EventArgs e)
         {
             myClassSum101.updateArray();
-            Refresh();
             label1.Text = $"Sum: {myClassSum101.TotalSum}";
+            Refresh();
         }
     }
 }
