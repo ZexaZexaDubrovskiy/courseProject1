@@ -6,17 +6,9 @@ namespace ScreenSum10
     public partial class Form1 : Form
     {
         //инициализация компонента
-        public Form1()
-        {
-            InitializeComponent();
-            //if (myClassSum101.WinOrLose() == false)
-            //    MessageBox.Show("Поле создано неудачно!", "Внимание", MessageBoxButtons.OK);
-        }
+        public Form1() => InitializeComponent();
         //событие изменения размеров компонента
-        private void myClassSum101_SizeChanged(object sender, EventArgs e)
-        {
-            myClassSum101.ChangeSize(e);
-        }
+        private void myClassSum101_SizeChanged(object sender, EventArgs e) => myClassSum101.ChangeSize(e);
         //событие на нажатие
         private void myClassSum101_Click(object sender, EventArgs e)
         {

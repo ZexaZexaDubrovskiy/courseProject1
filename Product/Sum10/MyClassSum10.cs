@@ -40,8 +40,7 @@ namespace Sum10
         List<Color> textColor = new List<Color>();
         private int[,] _cell = new int[10, 10];
         private List<int> Coordinate = new List<int>();
-        private int cnt, _totalSum, sum, _xCor, _yCor, _cellPadding, _objectSize, buffer;
-        private int MinSize => Math.Min(Width, Height);
+        private int _totalSum, sum, _xCor, _yCor, _cellPadding, _objectSize, buffer;
         //Свойства
         public int CellPadding
         {
@@ -94,6 +93,8 @@ namespace Sum10
                 }
             }
         }
+        //функция определения минимально
+        private int MinSize => Math.Min(Width, Height);
         //оптимизация отображения
         protected override CreateParams CreateParams
         {
@@ -142,11 +143,10 @@ namespace Sum10
                 {
                     int resSizeP = ObjectSize + CellPadding;
                     Brush dopObjectColor = new SolidBrush(Color.White);
-                    rect = new Rectangle(resSizeP * Coordinate[i+1], resSizeP * Coordinate[i ], ObjectSize, ObjectSize);
+                    rect = new Rectangle(resSizeP * Coordinate[i + 1], resSizeP * Coordinate[i], ObjectSize, ObjectSize);
                     e.Graphics.FillRectangle(dopObjectColor, rect);
-                    e.Graphics.DrawString(_cell[Coordinate[i], Coordinate[i+1]].ToString(), font, new SolidBrush(Color.Black), rect, sf);
+                    e.Graphics.DrawString(_cell[Coordinate[i], Coordinate[i + 1]].ToString(), font, new SolidBrush(Color.Black), rect, sf);
                 }
-
         }
         //нажатие на левую клавишу мыши
         public void onClickListener(Point MousePos)
@@ -154,12 +154,9 @@ namespace Sum10
             Point MousePos1 = PointToClient(MousePos);
             _xCor = MousePos1.Y / (_objectSize + _cellPadding);
             _yCor = MousePos1.X / (_objectSize + _cellPadding);
-            
 
-            if (_xCor >= 10)
-                _xCor = 9;
-            if (_yCor >= 10)
-                _yCor = 9;
+            if (_xCor >= 10) _xCor = 9;
+            if (_yCor >= 10) _yCor = 9;
 
             if (_cell[_xCor, _yCor] != 0)
             {
@@ -167,54 +164,59 @@ namespace Sum10
                 Coordinate.Add(_yCor);
                 if (Coordinate.Count > 2)
                 {
-                    cnt = 0;
+                    buffer = 0;
                     //проверка на рядом или нет
                     for (int i = 0; Coordinate.Count - i - 2 != 0; i = i + 2)
                     {
                         if (Coordinate[i] == Coordinate[i + 2]
                             && Coordinate[i + 1] + 1 == Coordinate[i + 3])
-                            cnt++;
+                            buffer++;
                         else if (Coordinate[i] == Coordinate[i + 2]
                             && Coordinate[i + 1] - 1 == Coordinate[i + 3])
-                            cnt++;
+                            buffer++;
                         else if (Coordinate[i] + 1 == Coordinate[i + 2]
                             && Coordinate[i + 1] == Coordinate[i + 3])
-                            cnt++;
+                            buffer++;
                         else if (Coordinate[i] - 1 == Coordinate[i + 2]
                             && Coordinate[i + 1] == Coordinate[i + 3])
-                            cnt++;
+                            buffer++;
                     }
                     //если рядом то считаем, нет чистим 1 элемент
-                    if (Coordinate.Count / 2 - 1 == cnt)
+                    if (Coordinate.Count / 2 - 1 == buffer)
                     {
                         sum = 0;
                         for (int i = 0; Coordinate.Count - i != 0; i = i + 2)
                             sum += _cell[Coordinate[i], Coordinate[i + 1]];
-
                         //сумма = 10, если больше, то чистим список
                         if (sum == 10)
                         {
                             TotalSum += Coordinate.Count * 10;
                             for (int i = 0; Coordinate.Count - i != 0; i = i + 2)
                                 _cell[Coordinate[i], Coordinate[i + 1]] -= 1;
-
                             Coordinate.Clear();
                             //опускаем вниз, если на элементе было 1
                             for (int k = 0; k < 10; k++)
                                 for (int i = _cell.GetLength(0) - 1; i != 0; --i)
-                                    for (int j = _cell.GetLength(1) - 1; j != 0; --j)
+                                    for (int j = _cell.GetLength(1) - 1; j != -1; --j)
                                         if (_cell[i, j] == 0)
                                         {
                                             buffer = _cell[i, j];
                                             _cell[i, j] = _cell[i - 1, j];
                                             _cell[i - 1, j] = buffer;
                                         }
-
                             if (WinOrLose() == false)
-                                MessageBox.Show("Вы проиграли", "Внимание", MessageBoxButtons.OK);
+                            {
+                                int buf = 0;
+                                for (int i = _cell.GetLength(0) - 1; i != 0; --i)
+                                    for (int j = _cell.GetLength(1) - 1; j != -1; --j)
+                                        buf += _cell[i, j];
+                                if (buf == 0)
+                                    MessageBox.Show("Вы выйграли", "Внимание", MessageBoxButtons.OK);
+                                else
+                                    MessageBox.Show("Вы проиграли", "Внимание", MessageBoxButtons.OK);
+                            }
                         }
-                        else if (sum > 10)
-                            Coordinate.Clear();
+                        else if (sum > 10) Coordinate.Clear();
                     }
                     else
                     {
@@ -234,14 +236,15 @@ namespace Sum10
                         return true;
             return false;
         }
-
-        private bool CheckCell(int Row, int Col, int Value)
+        //основной алгоритм проверки на сумму 10
+        public bool CheckCell(int Row, int Col, int Value)
         {
             List<CellPath> paths = new List<CellPath>();
             CellPath path = new CellPath();
             path.path.Add(new Cell() { Row = Row, Col = Col, Value = _cell[Row, Col] });
             paths.Add(path);
             int i = 0;
+            int buf;
             while (i < paths.Count)
             {
                 path = paths[i];
@@ -257,16 +260,16 @@ namespace Sum10
                 if (Col + 1 <= _cell.GetLength(1) - 1 && _cell[Row, Col + 1] > 0 && (!IsCellExists(Row, Col + 1, _cell[Row, Col + 1], path)))
                     paths.Add(MakePath(Row, Col + 1, _cell[Row, Col + 1], path));
                 i++;
+                buf = 0;
+                foreach (var sum in path.path)
+                {
+                    buf += sum.Value;
+                    if (buf == 0b1010)
+                        return true;
+                    else if (buf >= 0b1010)
+                        buf = 0; 
+                }
             }
-
-            int buf = 0;
-            foreach (var sum in path.path)
-            {
-                buf += sum.Value;
-                if (buf == 10)
-                    return true;
-            }
-
             return false;
         }
         //проверка что заданая ячейка не встречается по пути
@@ -282,45 +285,21 @@ namespace Sum10
         private CellPath MakePath(int Row, int Col, int Value, CellPath path)
         {
             Cell cell = new Cell() { Row = Row, Col = Col, Value = Value };
-            if (cell.Row - 1 >= 0 && _cell[Row - 1, Col] > 0)
-            {
-                //cell.Row = cell.Row - 1;
-                path.path.Add(cell);
-            }
-            else
-            if (cell.Col - 1 >= 0 && _cell[Row, Col - 1] > 0)
-            {
-                //cell.Col = cell.Col - 1;
-                path.path.Add(cell);
-            }
-            else
-            if (cell.Row + 1 <= _cell.GetLength(0) - 1 && _cell[Row + 1, Col] > 0)
-            {
-                //cell.Row = cell.Row + 1;
-                path.path.Add(cell);
-            }
-            else
-            if (cell.Col + 1 <= _cell.GetLength(1) - 1 && _cell[Row, Col + 1] > 0)
-            {
-                //cell.Col = cell.Col + 1;
-                path.path.Add(cell);
-            }
-
-            return path;
+            CellPath cellPath = new CellPath();
+            for (int i = 0; i < path.path.Count; ++i)
+                cellPath.path.Add(path.path[i]);
+            cellPath.path.Add(cell);
+            return cellPath;
         }
-
         //обновление поля
         public void updateArray()
         {
             var rand = new Random();
-            for (int i = 0; i < _cell.GetLength(0); ++i)
-                for (int j = 0; j < _cell.GetLength(1); ++j)
-                    _cell[i, j] = 0;
-
-
-            for (int i = 8; i < _cell.GetLength(0); i += 1)
+            for (int i = 0; i < _cell.GetLength(0); i += 1)
                 for (int j = 0; j < _cell.GetLength(1); j += 1)
                     _cell[i, j] = rand.Next(1, 10);
+            if (WinOrLose() == false)
+                MessageBox.Show("Поле создано неудачно!", "Внимание", MessageBoxButtons.OK);
             Coordinate.Clear();
             _totalSum = 0;
         }
