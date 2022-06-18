@@ -92,9 +92,7 @@ namespace Sum10
                 }
             }
         }
-        //функция определения минимально
         private int MinSize => Math.Min(Width, Height);
-        //оптимизация отображения
         protected override CreateParams CreateParams
         {
             get
@@ -104,7 +102,7 @@ namespace Sum10
                 return cp;
             }
         }
-        //функция изменения размеров окна
+        //функция изменения размеров визуального компонента
         protected override void SetBoundsCore(int x, int y, int width, int height, BoundsSpecified specified)
         {
             if (width > Math.Min(height, width))
@@ -114,7 +112,7 @@ namespace Sum10
             base.SetBoundsCore(x, y, width, height, specified);
             _objectSize = (Math.Min(Size.Width, Size.Height) - 10 * _cellPadding) / 10;
         }
-        //изменение размеров ячеек
+        //функция изменение размеров ячеек
         public void ChangeSize(EventArgs e) => ObjectSize = (MinSize - 10 * CellPadding) / 10;
         //функция рисования
         protected override void OnPaint(PaintEventArgs e)
@@ -147,7 +145,7 @@ namespace Sum10
                     e.Graphics.DrawString(_cell[Coordinate[i], Coordinate[i + 1]].ToString(), font, new SolidBrush(Color.Black), rect, sf);
                 }
         }
-        //нажатие на левую клавишу мыши
+        //функция нажатия на левую клавишу манипулятора "мышь"
         public void onClickListener(Point MousePos)
         {
             Point MousePos1 = PointToClient(MousePos);
@@ -235,7 +233,7 @@ namespace Sum10
                         return true;
             return false;
         }
-        //основной алгоритм проверки на сумму 10
+        //функция основного алгоритма проверки на сумму 10
         private bool CheckCell(int Row, int Col, int Value)
         {
             List<CellPath> paths = new List<CellPath>();
@@ -269,7 +267,7 @@ namespace Sum10
             }
             return false;
         }
-        //проверка что заданая ячейка не встречается по пути
+        //функция проверки, что заданая ячейка не встречается по пути
         private bool IsCellExists(int Row, int Col, int Value, CellPath path)
         {
             Cell cell = new Cell() { Row = Row, Col = Col, Value = Value };
@@ -278,7 +276,7 @@ namespace Sum10
                     return true;
             return false;
         }
-        //Создать путь(взять старую голову и добавить новую)
+        //функция добавления нового пути
         private CellPath MakePath(int Row, int Col, int Value, CellPath path)
         {
             Cell cell = new Cell() { Row = Row, Col = Col, Value = Value };
@@ -288,7 +286,7 @@ namespace Sum10
             cellPath.path.Add(cell);
             return cellPath;
         }
-        //обновление поля
+        //функция обновления поля, обнуления счета и очистка списка
         public void updateArray()
         {
             var rand = new Random();

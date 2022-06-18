@@ -46,3 +46,9 @@ C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\courseProject1\Pro
 C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\courseProject1\Product\Sum10\obj\Debug\Sum10.csproj.CoreCompileInputs.cache
 C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\courseProject1\Product\Sum10\obj\Debug\Sum10.dll
 C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\courseProject1\Product\Sum10\obj\Debug\Sum10.pdb
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\sadasdasdasd\courseProject1\Product\Sum10\bin\Debug\Sum10.dll
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\sadasdasdasd\courseProject1\Product\Sum10\bin\Debug\Sum10.pdb
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\sadasdasdasd\courseProject1\Product\Sum10\obj\Debug\Sum10.csproj.AssemblyReference.cache
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\sadasdasdasd\courseProject1\Product\Sum10\obj\Debug\Sum10.csproj.CoreCompileInputs.cache
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\sadasdasdasd\courseProject1\Product\Sum10\obj\Debug\Sum10.dll
+C:\Users\ZexaZ\OneDrive\Рабочий стол\CourseProject\sadasdasdasd\courseProject1\Product\Sum10\obj\Debug\Sum10.pdb
