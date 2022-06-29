@@ -208,9 +208,9 @@ namespace Sum10
                                     for (int j = _cell.GetLength(1) - 1; j != -1; --j)
                                         buf += _cell[i, j];
                                 if (buf == 0)
-                                    MessageBox.Show("Вы выйграли", "Внимание", MessageBoxButtons.OK);
+                                    MessageBox.Show("Победа", "Внимание", MessageBoxButtons.OK);
                                 else
-                                    MessageBox.Show("Вы проиграли", "Внимание", MessageBoxButtons.OK);
+                                    MessageBox.Show("Поражение", "Внимание", MessageBoxButtons.OK);
                             }
                         }
                         else if (sum > 10) Coordinate.Clear();
