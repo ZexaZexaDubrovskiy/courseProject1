@@ -241,32 +241,38 @@ namespace Sum10
             path.path.Add(new Cell() { Row = Row, Col = Col, Value = Value });
             paths.Add(path);
             int i = 0;
-            int buf;
             while (i < paths.Count)
             {
                 path = paths[i];
-                Cell head = path.path[paths[i].path.Count - 1];
-                Row = head.Row;
-                Col = head.Col;
-                if (Row - 1 >= 0 && _cell[Row - 1, Col] > 0 && (!IsCellExists(Row - 1, Col, _cell[Row - 1, Col], path)))
-                    paths.Add(MakePath(Row - 1, Col, _cell[Row - 1, Col], path));
-                if (Col - 1 >= 0 && _cell[Row, Col - 1] > 0 && (!IsCellExists(Row, Col - 1, _cell[Row, Col - 1], path)))
-                    paths.Add(MakePath(Row, Col - 1, _cell[Row, Col - 1], path));
-                if (Row + 1 <= _cell.GetLength(0) - 1 && _cell[Row + 1, Col] > 0 && (!IsCellExists(Row + 1, Col, _cell[Row + 1, Col], path)))
-                    paths.Add(MakePath(Row + 1, Col, _cell[Row + 1, Col], path));
-                if (Col + 1 <= _cell.GetLength(1) - 1 && _cell[Row, Col + 1] > 0 && (!IsCellExists(Row, Col + 1, _cell[Row, Col + 1], path)))
-                    paths.Add(MakePath(Row, Col + 1, _cell[Row, Col + 1], path));
-                i++;
-                buf = 0;
-                foreach (var sum in path.path)
+                if (CheckSum10(paths[i]) == 10) return true;
+                if (CheckSum10(paths[i]) <= 10)
                 {
-                    buf += sum.Value;
-                    if (buf == 0b1010) return true;
-                    else if (buf >= 0b1010) buf = 0; 
+                    Cell head = path.path[paths[i].path.Count - 1];
+                    Row = head.Row;
+                    Col = head.Col;
+                    if (Row - 1 >= 0 && _cell[Row - 1, Col] > 0 && (!IsCellExists(Row - 1, Col, _cell[Row - 1, Col], path)))
+                        paths.Add(MakePath(Row - 1, Col, _cell[Row - 1, Col], path));
+                    if (Col - 1 >= 0 && _cell[Row, Col - 1] > 0 && (!IsCellExists(Row, Col - 1, _cell[Row, Col - 1], path)))
+                        paths.Add(MakePath(Row, Col - 1, _cell[Row, Col - 1], path));
+                    if (Row + 1 <= _cell.GetLength(0) - 1 && _cell[Row + 1, Col] > 0 && (!IsCellExists(Row + 1, Col, _cell[Row + 1, Col], path)))
+                        paths.Add(MakePath(Row + 1, Col, _cell[Row + 1, Col], path));
+                    if (Col + 1 <= _cell.GetLength(1) - 1 && _cell[Row, Col + 1] > 0 && (!IsCellExists(Row, Col + 1, _cell[Row, Col + 1], path)))
+                        paths.Add(MakePath(Row, Col + 1, _cell[Row, Col + 1], path));
                 }
+                i++;
             }
             return false;
         }
+
+        //функция проверяет возможность суммы десяти в элементов пути
+        private int CheckSum10(CellPath path)
+        {
+            int buf = 0;
+            foreach (var sum in path.path)
+                buf += sum.Value;
+            return buf;
+        }
+
         //функция проверки, что заданая ячейка не встречается по пути
         private bool IsCellExists(int Row, int Col, int Value, CellPath path)
         {
@@ -290,7 +296,7 @@ namespace Sum10
         public void updateArray()
         {
             var rand = new Random();
-            for (int i = 0; i < _cell.GetLength(0); i += 1)
+            for (int i = 9; i < _cell.GetLength(0); i += 1)
                 for (int j = 0; j < _cell.GetLength(1); j += 1)
                     _cell[i, j] = rand.Next(1, 10);
             if (WinOrLose() == false)
