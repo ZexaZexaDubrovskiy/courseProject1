@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Sum10
 {
@@ -22,6 +23,7 @@ namespace Sum10
             numbersColor.Add(Color.FromArgb(255, 153, 0));
             numbersColor.Add(Color.FromArgb(72, 3, 111));
             numbersColor.Add(Color.FromArgb(7, 114, 161));
+
             //text
             textColor.Add(Color.FromArgb(0, 204, 0));
             textColor.Add(Color.FromArgb(0, 153, 153));
@@ -33,6 +35,7 @@ namespace Sum10
             textColor.Add(Color.FromArgb(13, 88, 166));
             textColor.Add(Color.FromArgb(166, 166, 0));
             textColor.Add(Color.FromArgb(0, 171, 111));
+
             updateArray();
         }
         //перпеменные
@@ -296,11 +299,11 @@ namespace Sum10
         public void updateArray()
         {
             var rand = new Random();
-            for (int i = 9; i < _cell.GetLength(0); i += 1)
+            for (int i = 0; i < _cell.GetLength(0); i += 1)
                 for (int j = 0; j < _cell.GetLength(1); j += 1)
                     _cell[i, j] = rand.Next(1, 10);
             if (WinOrLose() == false)
-                MessageBox.Show("Поле создано неудачно!", "Внимание", MessageBoxButtons.OK);
+                MessageBox.Show("Поле создано некорректно!", "Внимание", MessageBoxButtons.OK);
             Coordinate.Clear();
             _totalSum = 0;
         }
